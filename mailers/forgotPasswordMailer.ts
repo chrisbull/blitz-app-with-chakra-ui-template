@@ -3,6 +3,7 @@ import {
   DEV_SEND_EMAILS,
   FROM_EMAIL,
   IS_PRODUCTION,
+  NODE_ENV,
   POSTMARK_SERVER_KEY,
 } from 'app/config'
 import * as postmark from 'postmark'
@@ -21,7 +22,7 @@ export function forgotPasswordMailer({ to, token }: ResetPasswordMailer) {
 
   return {
     async send() {
-      if (IS_PRODUCTION || DEV_SEND_EMAILS) {
+      if (NODE_ENV !== 'test' && (IS_PRODUCTION || DEV_SEND_EMAILS)) {
         await client.sendEmailWithTemplate({
           From: FROM_EMAIL,
           To: to,
