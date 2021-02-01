@@ -1,3 +1,4 @@
+import { Box, BoxProps, Button, FormErrorMessage } from "@chakra-ui/react"
 import React, { ReactNode, PropsWithoutRef } from "react"
 import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form"
 import * as z from "zod"
@@ -8,10 +9,12 @@ type FormProps<S extends z.ZodType<any, any>> = {
   children: ReactNode
   /** Text to display in the submit button */
   submitText?: string
+  loadingText?: string
   schema?: S
   onSubmit: FinalFormProps<z.infer<S>>["onSubmit"]
   initialValues?: FinalFormProps<z.infer<S>>["initialValues"]
-} & Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit">
+} & Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit"> &
+  BoxProps
 
 export function Form<S extends z.ZodType<any, any>>({
   children,
@@ -19,6 +22,7 @@ export function Form<S extends z.ZodType<any, any>>({
   schema,
   initialValues,
   onSubmit,
+  loadingText = "Submitting",
   ...props
 }: FormProps<S>) {
   return (
@@ -34,28 +38,24 @@ export function Form<S extends z.ZodType<any, any>>({
       }}
       onSubmit={onSubmit}
       render={({ handleSubmit, submitting, submitError }) => (
-        <form onSubmit={handleSubmit} className="form" {...props}>
+        <Box as="form" onSubmit={handleSubmit} mt={5} {...props}>
           {/* Form fields supplied as children are rendered here */}
           {children}
 
-          {submitError && (
-            <div role="alert" style={{ color: "red" }}>
-              {submitError}
-            </div>
-          )}
+          {submitError && <FormErrorMessage role="alert">{submitError}</FormErrorMessage>}
 
           {submitText && (
-            <button type="submit" disabled={submitting}>
+            <Button
+              type="submit"
+              disabled={submitting}
+              loadingText={loadingText}
+              isLoading={submitting}
+              colorScheme="teal"
+            >
               {submitText}
-            </button>
+            </Button>
           )}
-
-          <style global jsx>{`
-            .form > * + * {
-              margin-top: 1rem;
-            }
-          `}</style>
-        </form>
+        </Box>
       )}
     />
   )

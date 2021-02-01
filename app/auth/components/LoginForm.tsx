@@ -1,7 +1,7 @@
 import React from "react"
 import { AuthenticationError, Link, useMutation } from "blitz"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
-import { Form, FORM_ERROR } from "app/core/components/Form"
+import { Form, FORM_ERROR } from "app/core/components/Forms/Form"
 import login from "app/auth/mutations/login"
 import { Login } from "app/auth/validations"
 import { Checkbox } from "@chakra-ui/react"
