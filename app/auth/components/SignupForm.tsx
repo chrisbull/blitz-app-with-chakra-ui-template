@@ -4,7 +4,7 @@ import { LabeledTextField } from 'app/core/components/LabeledTextField'
 import { Form, FORM_ERROR } from 'app/core/components/Forms/Form'
 import signup from 'app/auth/mutations/signup'
 import { Signup } from 'app/auth/validations'
-import { Box, Button, Container, Flex, Heading, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 
 type SignupFormProps = {
   onSuccess?: () => void
@@ -14,9 +14,14 @@ export const SignupForm = (props: SignupFormProps) => {
   const [signupMutation] = useMutation(signup)
 
   return (
-    <Flex bg="gray.500" minH="100vh" justify="center" align="center">
+    <Flex
+      bg={useColorModeValue('gray.100', 'gray.900')}
+      minH="100vh"
+      justify="center"
+      align="center"
+    >
       <Container>
-        <Box p={10} shadow="md" borderRadius="md" bg="white">
+        <Box p={10} shadow="md" borderRadius="md" bg={useColorModeValue('white', 'gray.800')}>
           <Heading size="lg">Create an Account</Heading>
 
           <Form
@@ -45,7 +50,13 @@ export const SignupForm = (props: SignupFormProps) => {
               type="password"
             />
           </Form>
-          <Box mt={5} textAlign="center" borderTop="1px solid" borderTopColor="gray.100" pt={5}>
+          <Box
+            mt={5}
+            textAlign="center"
+            borderTop="1px solid"
+            borderTopColor={useColorModeValue('gray.100', 'gray.700')}
+            pt={5}
+          >
             <Text>
               Already have an account?{' '}
               <Link href="/login">

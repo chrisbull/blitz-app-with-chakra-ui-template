@@ -1,4 +1,13 @@
-import { Box, Button, Checkbox, Container, Flex, Heading, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Checkbox,
+  Container,
+  Flex,
+  Heading,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react'
 import login from 'app/auth/mutations/login'
 import { Login } from 'app/auth/validations'
 import { Form, FORM_ERROR } from 'app/core/components/Forms/Form'
@@ -14,9 +23,14 @@ export const LoginForm = (props: LoginFormProps) => {
   const [loginMutation] = useMutation(login)
 
   return (
-    <Flex bg="gray.500" minH="100vh" justify="center" align="center">
+    <Flex
+      bg={useColorModeValue('gray.100', 'gray.900')}
+      minH="100vh"
+      justify="center"
+      align="center"
+    >
       <Container>
-        <Box p={10} shadow="md" borderRadius="md" bg="white">
+        <Box p={10} shadow="md" borderRadius="md" bg={useColorModeValue('white', 'gray.800')}>
           <Heading size="lg">Login</Heading>
 
           <Form
@@ -54,7 +68,13 @@ export const LoginForm = (props: LoginFormProps) => {
             </Box>
           </Form>
 
-          <Box mt={5} textAlign="center" borderTop="1px solid" borderTopColor="gray.100" pt={5}>
+          <Box
+            mt={5}
+            textAlign="center"
+            borderTop="1px solid"
+            borderTopColor={useColorModeValue('gray.100', 'gray.700')}
+            pt={5}
+          >
             <Text>
               Don't have an account?{' '}
               <Link href="/signup">
