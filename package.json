@@ -4,7 +4,9 @@
   "scripts": {
     "start": "blitz start",
     "studio": "blitz prisma studio",
-    "build": "NODE_ENV=production blitz prisma db push --preview-feature && blitz build",
+    "build": "NODE_ENV=production prisma migrate deploy --preview-feature && blitz build",
+    "prisma:migrate": "blitz prisma migrate dev --preview-feature",
+    "prisma:push": "blitz prisma db push --preview-feature",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",
     "test:watch": "jest --watch"
