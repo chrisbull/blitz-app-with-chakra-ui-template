@@ -40,6 +40,7 @@ export const colors = {
     900: '#021226',
   },
   gray: tailwindColors.blueGray,
+  blueGray: tailwindColors.blueGray,
   success: theme.colors.green,
   error: theme.colors.red,
   warning: theme.colors.yellow,

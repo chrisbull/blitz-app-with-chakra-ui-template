@@ -6,8 +6,11 @@ import {
   Flex,
   Grid,
   HStack,
+  Icon,
+  Link as ChakraLink,
   SimpleGrid,
   Text,
+  useColorModeValue,
   VStack,
 } from '@chakra-ui/react'
 import logout from 'app/auth/mutations/logout'
@@ -16,6 +19,7 @@ import { useCurrentUser } from 'app/core/hooks/useCurrentUser'
 import Layout from 'app/core/layouts/Layout'
 import { BlitzPage, Link, useMutation } from 'blitz'
 import React, { Suspense } from 'react'
+import { FaHeart } from 'react-icons/fa'
 
 /*
  * This file is just for a pleasant getting started page for your new app.
@@ -24,7 +28,7 @@ import React, { Suspense } from 'react'
 
 const Home: BlitzPage = () => {
   return (
-    <Flex minH="100vh" bg="white">
+    <Flex minH="100vh">
       <Container>
         <VStack as="main" align="stretch" spacing={5} py={10}>
           <Box>
@@ -54,7 +58,7 @@ const Home: BlitzPage = () => {
             </Link>
           </Text>
 
-          <Grid gridAutoFlow="column" gridGap={5} my={3}>
+          <Grid gridAutoFlow={['row', 'row', 'column', 'column']} gridGap={5} my={3}>
             <Link href="https://blitzjs.com/docs/getting-started?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new">
               <Button size="lg" variant="outline">
                 Documentation
@@ -79,24 +83,23 @@ const Home: BlitzPage = () => {
         bottom="0"
         maxW="100%"
         p={5}
-        bg="gray.100"
-        color="blackAlpha.600"
+        bg={useColorModeValue('gray.200', 'gray.900')}
+        color={useColorModeValue('gray.700', 'white')}
         centerContent
       >
-        <HStack>
-          <Text>Thanks to</Text>
-          <Link href="https://blitzjs.com">
-            <Button variant="link" colorScheme="purple">
-              BlitzJS
-            </Button>
-          </Link>
-          <Text>and</Text>
-          <Link href="https://chakra-ui.com/">
-            <Button variant="link" colorScheme="teal">
-              ChakraUI
-            </Button>
-          </Link>
-        </HStack>
+        <Flex verticalAlign="center" align="center" gridGap={2}>
+          <Icon as={FaHeart} color="red.500" />
+          <Text>
+            Thanks to{' '}
+            <Link href="https://blitzjs.com">
+              <ChakraLink color="purple.500">BlitzJS</ChakraLink>
+            </Link>{' '}
+            and{' '}
+            <Link href="https://chakra-ui.com/">
+              <ChakraLink color="teal.500">ChakraUI</ChakraLink>
+            </Link>
+          </Text>
+        </Flex>
       </Container>
     </Flex>
   )

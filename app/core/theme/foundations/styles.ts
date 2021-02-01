@@ -1,14 +1,13 @@
+import { mode } from '@chakra-ui/theme-tools'
+
 export const styles = {
-  global: {
+  global: (props) => ({
     '*:focus, [data-focus]': {
       outline: 'none',
       boxShadow: 'none',
     },
-    html: {
-      bg: 'gray.800',
-    },
+    html: {},
     body: {
-      bg: 'gray.100',
       WebkitTapHighlightColor: 'transparent',
     },
     '#chakra-toast-portal > *': {
@@ -17,5 +16,5 @@ export const styles = {
       pr: 'safe-right',
       pb: 'safe-bottom',
     },
-  },
+  }),
 }
