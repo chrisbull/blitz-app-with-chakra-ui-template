@@ -1,4 +1,12 @@
-import { IconButton, Input, InputGroup, InputLeftElement, InputProps } from '@chakra-ui/react'
+import {
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputProps,
+  InputRightElement,
+  Spinner,
+} from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useField } from 'react-final-form'
 import { RiEyeCloseLine, RiEyeLine } from 'react-icons/ri'
@@ -14,7 +22,7 @@ export const FormTextInput = React.forwardRef<HTMLInputElement, FormTextInputPro
     const [showPassword, setShowPassword] = useState(false)
     const {
       input,
-      meta: { touched, error, submitError },
+      meta: { touched, error, submitError, validating },
     } = useField<string | number>(name, { type, parse: type === 'number' ? Number : undefined })
 
     return (
@@ -48,8 +56,16 @@ export const FormTextInput = React.forwardRef<HTMLInputElement, FormTextInputPro
               />
             </InputLeftElement>
           )}
+
           {/* For injecting other child components like: InputLeftAddon etc */}
           {children}
+
+          {/* show spinner when validating */}
+          {touched && validating && (
+            <InputRightElement>
+              <Spinner size="sm" flex="none" />
+            </InputRightElement>
+          )}
         </InputGroup>
       </FormBaseControl>
     )
