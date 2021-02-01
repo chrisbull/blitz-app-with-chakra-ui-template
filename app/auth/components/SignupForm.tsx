@@ -49,7 +49,9 @@ export const SignupForm = (props: SignupFormProps) => {
             <Text>
               Already have an account?{" "}
               <Link href="/login">
-                <Button variant="link">Login</Button>
+                <Button variant="link" colorScheme="brand">
+                  Login
+                </Button>
               </Link>
             </Text>
           </Box>

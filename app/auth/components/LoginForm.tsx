@@ -58,7 +58,9 @@ export const LoginForm = (props: LoginFormProps) => {
             <Text>
               Don't have an account?{" "}
               <Link href="/signup">
-                <Button variant="link">Sign Up</Button>
+                <Button variant="link" colorScheme="brand">
+                  Sign Up
+                </Button>
               </Link>
             </Text>
           </Box>

@@ -51,7 +51,7 @@ export function Form<S extends z.ZodType<any, any>>({
                 disabled={submitting}
                 loadingText={loadingText}
                 isLoading={submitting}
-                colorScheme="teal"
+                colorScheme="brand"
               >
                 {submitText}
               </Button>
