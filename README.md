@@ -1,8 +1,18 @@
-[![Blitz.js](https://raw.githubusercontent.com/blitz-js/art/master/github-cover-photo.png)](https://blitzjs.com)
+[![Blitz.js](https://raw.githubusercontent.com/chrisbull/blitz-app-with-chakra-ui-template/main/public/logo.svg)](https://github.com/chrisbull/blitz-app-with-chakra-ui-template)
 
-This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
+# **Blitz + ChakraUI**
 
-# **name**
+This is a [Blitz.js](https://github.com/blitz-js/blitz) app. **But with a complete implementation of [Chakra UI](https://chakra-ui.com/)**
+
+---
+
+## **So what's Different?**
+
+- **Components** - converted to use `@chakra-ui/react`
+- **Custom theme** - with easy customization and well organizated folder structure
+- **Dark Mode** - example of how to use dark mode using the system settings
+
+---
 
 ## Getting Started
 
@@ -19,13 +29,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Ensure the `.env.local` file has required environment variables:
 
 ```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/blitz-app-with-chakra-ui-template
+DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/postgres
 ```
 
 Ensure the `.env.test.local` file has required environment variables:
 
 ```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/blitz-app-with-chakra-ui-template_test
+DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/postgres_test
 ```
 
 ## Tests
@@ -69,6 +79,9 @@ blitz-app-with-chakra-ui-template
 │   │   ├── components/
 │   │   │   ├── Form.tsx
 │   │   │   └── LabeledTextField.tsx
+│   │   │   └── PageContainer.tsx
+│   │   │   └── Logo.tsx
+│   │   │   └── Card.tsx
 │   │   ├── hooks/
 │   │   │   └── useCurrentUser.ts
 │   │   └── layouts/
