@@ -3,7 +3,7 @@ import signup from 'app/auth/mutations/signup'
 import { Signup } from 'app/auth/validations'
 import { Card } from 'app/core/components/Card'
 import { Form, FORM_ERROR } from 'app/core/components/Form'
-import { LabeledTextField } from 'app/core/components/LabeledTextField'
+import { FormTextInput } from 'app/core/components/Forms/FormTextInput'
 import { Link, useMutation } from 'blitz'
 import React from 'react'
 
@@ -36,8 +36,8 @@ export const SignupForm = (props: SignupFormProps) => {
           }
         }}
       >
-        <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
+        <FormTextInput name="email" label="Email" />
+        <FormTextInput name="password" label="Password" type="password" />
       </Form>
       <Box
         mt={5}

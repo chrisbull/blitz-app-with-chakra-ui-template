@@ -3,7 +3,7 @@ import resetPassword from 'app/auth/mutations/resetPassword'
 import { ResetPassword } from 'app/auth/validations'
 import { Card } from 'app/core/components/Card'
 import { Form, FORM_ERROR } from 'app/core/components/Form'
-import { LabeledTextField } from 'app/core/components/LabeledTextField'
+import { FormTextInput } from 'app/core/components/Forms/FormTextInput'
 import { PageContainer } from 'app/core/components/PageContainer'
 import Layout from 'app/core/layouts/Layout'
 import { BlitzPage, Link, useMutation, useRouterQuery } from 'blitz'
@@ -53,8 +53,8 @@ const ResetPasswordPage: BlitzPage = () => {
                 }
               }}
             >
-              <LabeledTextField name="password" label="New Password" type="password" />
-              <LabeledTextField
+              <FormTextInput name="password" label="New Password" type="password" />
+              <FormTextInput
                 name="passwordConfirmation"
                 label="Confirm New Password"
                 type="password"

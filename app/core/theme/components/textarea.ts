@@ -2,9 +2,7 @@
 export default {
   variants: {
     outline: {
-      field: {
-        bg: 'transparent',
-      },
+      // bg: 'white',
     },
   },
 }
