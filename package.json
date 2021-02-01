@@ -9,7 +9,8 @@
     "prisma:push": "blitz prisma db push --preview-feature",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "generate:favicon": "real-favicon generate faviconDescription.json faviconData.json public"
   },
   "browserslist": [
     "defaults"
@@ -41,9 +42,12 @@
     "@emotion/styled": "11.0.0",
     "@prisma/cli": "~2.15",
     "@prisma/client": "~2.15",
+    "@sendgrid/client": "7.4.2",
+    "@sendgrid/mail": "7.4.2",
     "blitz": "0.30.0-canary.4",
     "final-form": "4.20.1",
     "framer-motion": "3.2.0",
+    "next-seo": "4.18.0",
     "react": "0.0.0-experimental-3310209d0",
     "react-dom": "0.0.0-experimental-3310209d0",
     "react-error-boundary": "3.1.0",
@@ -63,7 +67,8 @@
     "lint-staged": "10.5.3",
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
-    "preview-email": "3.0.3"
+    "preview-email": "3.0.3",
+    "real-favicon": "latest"
   },
   "private": true
 }
