@@ -1,4 +1,4 @@
-import { Box, BoxProps, Button, FormErrorMessage } from "@chakra-ui/react"
+import { Box, BoxProps, Button, FormErrorMessage, VStack } from "@chakra-ui/react"
 import React, { ReactNode, PropsWithoutRef } from "react"
 import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form"
 import * as z from "zod"
@@ -39,22 +39,24 @@ export function Form<S extends z.ZodType<any, any>>({
       onSubmit={onSubmit}
       render={({ handleSubmit, submitting, submitError }) => (
         <Box as="form" onSubmit={handleSubmit} mt={5} {...props}>
-          {/* Form fields supplied as children are rendered here */}
-          {children}
+          <VStack align="left" spacing={5}>
+            {/* Form fields supplied as children are rendered here */}
+            {children}
 
-          {submitError && <FormErrorMessage role="alert">{submitError}</FormErrorMessage>}
+            {submitError && <FormErrorMessage role="alert">{submitError}</FormErrorMessage>}
 
-          {submitText && (
-            <Button
-              type="submit"
-              disabled={submitting}
-              loadingText={loadingText}
-              isLoading={submitting}
-              colorScheme="teal"
-            >
-              {submitText}
-            </Button>
-          )}
+            {submitText && (
+              <Button
+                type="submit"
+                disabled={submitting}
+                loadingText={loadingText}
+                isLoading={submitting}
+                colorScheme="teal"
+              >
+                {submitText}
+              </Button>
+            )}
+          </VStack>
         </Box>
       )}
     />
