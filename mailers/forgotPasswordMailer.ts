@@ -1,44 +1,48 @@
-/* TODO - You need to add a mailer integration in `integrations/` and import here.
- *
- * The integration file can be very simple. Instantiate the email client
- * and then export it. That way you can import here and anywhere else
- * and use it straight away.
- */
-import previewEmail from "preview-email"
+import {
+  APP_NAME,
+  DEV_SEND_EMAILS,
+  FROM_EMAIL,
+  IS_PRODUCTION,
+  POSTMARK_SERVER_KEY,
+} from 'app/config'
+import * as postmark from 'postmark'
+import previewEmail from 'preview-email'
 
 type ResetPasswordMailer = {
   to: string
   token: string
 }
 
+const client = new postmark.ServerClient(POSTMARK_SERVER_KEY)
+
 export function forgotPasswordMailer({ to, token }: ResetPasswordMailer) {
-  // In production, set APP_ORIGIN to your production server origin
   const origin = process.env.APP_ORIGIN || process.env.BLITZ_DEV_SERVER_ORIGIN
   const resetUrl = `${origin}/reset-password?token=${token}`
 
-  const msg = {
-    from: "TODO@example.com",
-    to,
-    subject: "Your Password Reset Instructions",
-    html: `
-      <h1>Reset Your Password</h1>
-      <h3>NOTE: You must set up a production email integration in mailers/forgotPasswordMailer.ts</h3>
-
-      <a href="${resetUrl}">
-        Click here to set a new password
-      </a>
-    `,
-  }
-
   return {
     async send() {
-      if (process.env.NODE_ENV === "production") {
-        // TODO - send the production email, like this:
-        // await postmark.sendEmail(msg)
-        throw new Error("No production email implementation in mailers/forgotPasswordMailer")
+      if (IS_PRODUCTION || DEV_SEND_EMAILS) {
+        await client.sendEmailWithTemplate({
+          From: FROM_EMAIL,
+          To: to,
+          TemplateAlias: 'password-reset',
+          TemplateModel: {
+            product_url: origin,
+            product_name: APP_NAME,
+            name: to,
+            action_url: resetUrl,
+            company_name: APP_NAME,
+            company_address: '123 Something St. San Francisco, CA 94123',
+          },
+        })
       } else {
         // Preview email in the browser
-        await previewEmail(msg)
+        await previewEmail({
+          to,
+          from: FROM_EMAIL,
+          html: `${resetUrl}`,
+          text: `${resetUrl}`,
+        })
       }
     },
   }
