@@ -1,4 +1,4 @@
-import { Box, BoxProps, theme, useColorModeValue, useTheme } from '@chakra-ui/react'
+import { Box, BoxProps, useColorModeValue, useTheme } from '@chakra-ui/react'
 import { getColor } from '@chakra-ui/theme-tools'
 import React from 'react'
 
