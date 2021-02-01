@@ -1,6 +1,6 @@
-import { resolver, SecurePassword, AuthenticationError } from "blitz"
-import db from "db"
-import { Login } from "../validations"
+import { resolver, SecurePassword, AuthenticationError } from 'blitz'
+import db from 'db'
+import { Login } from '../validations'
 
 export const authenticateUser = async (email: string, password: string) => {
   const user = await db.user.findFirst({ where: { email } })

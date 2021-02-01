@@ -1,7 +1,7 @@
-import { resolver, generateToken, hash256 } from "blitz"
-import db from "db"
-import { forgotPasswordMailer } from "mailers/forgotPasswordMailer"
-import { ForgotPassword } from "../validations"
+import { resolver, generateToken, hash256 } from 'blitz'
+import db from 'db'
+import { forgotPasswordMailer } from 'mailers/forgotPasswordMailer'
+import { ForgotPassword } from '../validations'
 
 const RESET_PASSWORD_TOKEN_EXPIRATION_IN_HOURS = 4
 
@@ -18,12 +18,12 @@ export default resolver.pipe(resolver.zod(ForgotPassword), async ({ email }) => 
   // 3. If user with this email was found
   if (user) {
     // 4. Delete any existing password reset tokens
-    await db.token.deleteMany({ where: { type: "RESET_PASSWORD", userId: user.id } })
+    await db.token.deleteMany({ where: { type: 'RESET_PASSWORD', userId: user.id } })
     // 5. Save this new token in the database.
     await db.token.create({
       data: {
         user: { connect: { id: user.id } },
-        type: "RESET_PASSWORD",
+        type: 'RESET_PASSWORD',
         expiresAt,
         hashedToken,
         sentTo: user.email,

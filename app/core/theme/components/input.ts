@@ -3,7 +3,7 @@ export default {
   variants: {
     outline: {
       field: {
-        bg: "white",
+        bg: 'white',
       },
     },
   },

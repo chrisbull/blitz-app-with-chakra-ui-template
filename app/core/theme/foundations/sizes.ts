@@ -1,4 +1,4 @@
 export const sizes = {
-  navbar: "60px",
-  full: "100%",
+  navbar: '60px',
+  full: '100%',
 }

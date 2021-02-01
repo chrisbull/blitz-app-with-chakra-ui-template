@@ -5,13 +5,13 @@ import {
   AuthenticationError,
   AuthorizationError,
   ErrorFallbackProps,
-} from "blitz"
-import { ErrorBoundary } from "react-error-boundary"
-import { queryCache } from "react-query"
-import LoginForm from "app/auth/components/LoginForm"
+} from 'blitz'
+import { ErrorBoundary } from 'react-error-boundary'
+import { queryCache } from 'react-query'
+import LoginForm from 'app/auth/components/LoginForm'
 
-import { ChakraProvider } from "@chakra-ui/react"
-import theme from "app/core/theme"
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from 'app/core/theme'
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)

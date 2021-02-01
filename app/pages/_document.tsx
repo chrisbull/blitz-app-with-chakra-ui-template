@@ -1,5 +1,5 @@
-import { ColorModeScript } from "@chakra-ui/react"
-import { Document, Html, DocumentHead, Main, BlitzScript /*DocumentContext*/ } from "blitz"
+import { ColorModeScript } from '@chakra-ui/react'
+import { Document, Html, DocumentHead, Main, BlitzScript /*DocumentContext*/ } from 'blitz'
 
 class MyDocument extends Document {
   // Only uncomment if you need to customize this behaviour

@@ -1,8 +1,8 @@
-import { Box, BoxProps, Button, FormErrorMessage, VStack } from "@chakra-ui/react"
-import React, { ReactNode, PropsWithoutRef } from "react"
-import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form"
-import * as z from "zod"
-export { FORM_ERROR } from "final-form"
+import { Box, BoxProps, Button, FormErrorMessage, VStack } from '@chakra-ui/react'
+import React, { ReactNode, PropsWithoutRef } from 'react'
+import { Form as FinalForm, FormProps as FinalFormProps } from 'react-final-form'
+import * as z from 'zod'
+export { FORM_ERROR } from 'final-form'
 
 type FormProps<S extends z.ZodType<any, any>> = {
   /** All your form fields */
@@ -11,9 +11,9 @@ type FormProps<S extends z.ZodType<any, any>> = {
   submitText?: string
   loadingText?: string
   schema?: S
-  onSubmit: FinalFormProps<z.infer<S>>["onSubmit"]
-  initialValues?: FinalFormProps<z.infer<S>>["initialValues"]
-} & Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit"> &
+  onSubmit: FinalFormProps<z.infer<S>>['onSubmit']
+  initialValues?: FinalFormProps<z.infer<S>>['initialValues']
+} & Omit<PropsWithoutRef<JSX.IntrinsicElements['form']>, 'onSubmit'> &
   BoxProps
 
 export function Form<S extends z.ZodType<any, any>>({
@@ -22,7 +22,7 @@ export function Form<S extends z.ZodType<any, any>>({
   schema,
   initialValues,
   onSubmit,
-  loadingText = "Submitting",
+  loadingText = 'Submitting',
   ...props
 }: FormProps<S>) {
   return (

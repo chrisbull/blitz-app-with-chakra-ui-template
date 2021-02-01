@@ -1,3 +1,3 @@
 export const fontSizes = {
-  tiny: "0.25rem",
+  tiny: '0.25rem',
 }

@@ -1,10 +1,10 @@
-import React from "react"
-import { Link, useMutation } from "blitz"
-import { LabeledTextField } from "app/core/components/LabeledTextField"
-import { Form, FORM_ERROR } from "app/core/components/Forms/Form"
-import signup from "app/auth/mutations/signup"
-import { Signup } from "app/auth/validations"
-import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react"
+import React from 'react'
+import { Link, useMutation } from 'blitz'
+import { LabeledTextField } from 'app/core/components/LabeledTextField'
+import { Form, FORM_ERROR } from 'app/core/components/Forms/Form'
+import signup from 'app/auth/mutations/signup'
+import { Signup } from 'app/auth/validations'
+import { Box, Button, Container, Flex, Heading, Text } from '@chakra-ui/react'
 
 type SignupFormProps = {
   onSuccess?: () => void
@@ -22,15 +22,15 @@ export const SignupForm = (props: SignupFormProps) => {
           <Form
             submitText="Create Account"
             schema={Signup}
-            initialValues={{ email: "", password: "" }}
+            initialValues={{ email: '', password: '' }}
             onSubmit={async (values) => {
               try {
                 await signupMutation(values)
                 props.onSuccess?.()
               } catch (error) {
-                if (error.code === "P2002" && error.meta?.target?.includes("email")) {
+                if (error.code === 'P2002' && error.meta?.target?.includes('email')) {
                   // This error comes from Prisma
-                  return { email: "This email is already being used" }
+                  return { email: 'This email is already being used' }
                 } else {
                   return { [FORM_ERROR]: error.toString() }
                 }
@@ -47,7 +47,7 @@ export const SignupForm = (props: SignupFormProps) => {
           </Form>
           <Box mt={5} textAlign="center" borderTop="1px solid" borderTopColor="gray.100" pt={5}>
             <Text>
-              Already have an account?{" "}
+              Already have an account?{' '}
               <Link href="/login">
                 <Button variant="link" colorScheme="brand">
                   Login

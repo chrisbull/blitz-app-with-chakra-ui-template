@@ -1,36 +1,36 @@
-import { hash256, Ctx } from "blitz"
-import forgotPassword from "./forgotPassword"
-import db from "db"
-import previewEmail from "preview-email"
+import { hash256, Ctx } from 'blitz'
+import forgotPassword from './forgotPassword'
+import db from 'db'
+import previewEmail from 'preview-email'
 
 beforeEach(async () => {
   await db.$reset()
 })
 
-const generatedToken = "plain-token"
-jest.mock("blitz", () => ({
-  ...jest.requireActual("blitz")!,
+const generatedToken = 'plain-token'
+jest.mock('blitz', () => ({
+  ...jest.requireActual('blitz')!,
   generateToken: () => generatedToken,
 }))
-jest.mock("preview-email", () => jest.fn())
+jest.mock('preview-email', () => jest.fn())
 
-describe("forgotPassword mutation", () => {
+describe('forgotPassword mutation', () => {
   it("does not throw error if user doesn't exist", async () => {
-    await expect(forgotPassword({ email: "no-user@email.com" }, {} as Ctx)).resolves.not.toThrow()
+    await expect(forgotPassword({ email: 'no-user@email.com' }, {} as Ctx)).resolves.not.toThrow()
   })
 
-  it("works correctly", async () => {
+  it('works correctly', async () => {
     // Create test user
     const user = await db.user.create({
       data: {
-        email: "user@example.com",
+        email: 'user@example.com',
         tokens: {
           // Create old token to ensure it's deleted
           create: {
-            type: "RESET_PASSWORD",
-            hashedToken: "token",
+            type: 'RESET_PASSWORD',
+            hashedToken: 'token',
             expiresAt: new Date(),
-            sentTo: "user@example.com",
+            sentTo: 'user@example.com',
           },
         },
       },
@@ -47,7 +47,7 @@ describe("forgotPassword mutation", () => {
     expect(tokens.length).toBe(1)
 
     expect(token.id).not.toBe(user.tokens[0].id)
-    expect(token.type).toBe("RESET_PASSWORD")
+    expect(token.type).toBe('RESET_PASSWORD')
     expect(token.sentTo).toBe(user.email)
     expect(token.hashedToken).toBe(hash256(generatedToken))
     expect(token.expiresAt > new Date()).toBe(true)

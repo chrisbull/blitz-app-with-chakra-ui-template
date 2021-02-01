@@ -5,9 +5,9 @@ import {
   FormLabel,
   Input,
   InputProps,
-} from "@chakra-ui/react"
-import React from "react"
-import { useField } from "react-final-form"
+} from '@chakra-ui/react'
+import React from 'react'
+import { useField } from 'react-final-form'
 
 export interface LabeledTextFieldProps extends InputProps {
   /** Field name. */
@@ -15,7 +15,7 @@ export interface LabeledTextFieldProps extends InputProps {
   /** Field label. */
   label: string
   /** Field type. Doesn't include radio buttons and checkboxes */
-  type?: "text" | "password" | "email" | "number"
+  type?: 'text' | 'password' | 'email' | 'number'
   outerProps?: FormControlProps
 }
 
@@ -25,10 +25,10 @@ export const LabeledTextField = React.forwardRef<HTMLInputElement, LabeledTextFi
       input,
       meta: { touched, error, submitError, submitting },
     } = useField(name, {
-      parse: props.type === "number" ? Number : undefined,
+      parse: props.type === 'number' ? Number : undefined,
     })
 
-    const normalizedError = Array.isArray(error) ? error.join(", ") : error || submitError
+    const normalizedError = Array.isArray(error) ? error.join(', ') : error || submitError
 
     return (
       <FormControl {...outerProps} isInvalid={touched && normalizedError}>
