@@ -2,11 +2,13 @@
   "version": 2,
   "env": {
     "DATABASE_URL": "@database_url",
+    "SESSION_SECRET_KEY": "@session_secret_key",
     "NODE_ENV": "production"
   },
   "build": {
     "env": {
       "DATABASE_URL": "@database_url",
+      "SESSION_SECRET_KEY": "@session_secret_key",
       "NODE_ENV": "production"
     }
   }
