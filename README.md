@@ -24,18 +24,26 @@ blitz start
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Database Using Docker
+
+Make sure to setup your db with docker using `docker-compose`
+
+```
+docker-compose up -d
+```
+
 ## Environment Variables
 
 Ensure the `.env.local` file has required environment variables:
 
 ```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/postgres
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
 ```
 
 Ensure the `.env.test.local` file has required environment variables:
 
 ```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/postgres_test
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres_test
 ```
 
 ## Tests
