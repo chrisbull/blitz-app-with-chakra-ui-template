@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "blitz dev",
-    "build": "blitz build",
+    "build": "NODE_ENV=production blitz build && blitz prisma migrate deploy && blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
+    "prisma:migrate": "blitz prisma migrate dev",
+    "prisma:push": "blitz prisma db push --preview-feature",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:favicon": "real-favicon generate faviconDescription.json faviconData.json public"
   },
   "prisma": {
     "schema": "db/schema.prisma"
@@ -33,7 +36,19 @@
     "typescript": "~4.2",
     "zod": "1.11.16",
     "react-hook-form": "7.3.5",
-    "@hookform/resolvers": "2.4.0"
+    "@hookform/resolvers": "2.4.0",
+    "@chakra-ui/icons": "1.0.12",
+    "@chakra-ui/react": "1.6.0",
+    "@chakra-ui/theme-tools": "1.1.6",
+    "@emotion/react": "11.1.5",
+    "@emotion/styled": "11.3.0",
+    "@hookform/devtools": "3.0.2",
+    "@sendgrid/client": "7.4.2",
+    "@sendgrid/mail": "7.4.2",
+    "framer-motion": "4.1.11",
+    "next-seo": "4.24.0",
+    "postmark": "2.7.4",
+    "react-icons": "4.2.0"
   },
   "devDependencies": {
     "@types/react": "17.0.4",
@@ -44,7 +59,11 @@
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
     "preview-email": "3.0.4",
-    "prettier-plugin-prisma": "0.7.0"
+    "prettier-plugin-prisma": "0.7.0",
+    "@types/eslint": "7.2.10",
+    "@types/prettier": "2.2.3",
+    "@types/react-dom": "17.0.3",
+    "cli-real-favicon": "latest"
   },
   "private": true
 }

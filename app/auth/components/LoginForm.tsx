@@ -1,8 +1,14 @@
-import { AuthenticationError, Link, useMutation, Routes } from "blitz"
-import { LabeledTextField } from "app/core/components/LabeledTextField"
-import { Form, FORM_ERROR } from "app/core/components/Form"
+import { Checkbox } from "@chakra-ui/checkbox"
+import { useColorModeValue } from "@chakra-ui/color-mode"
+import { Box, Text } from "@chakra-ui/layout"
 import login from "app/auth/mutations/login"
 import { Login } from "app/auth/validations"
+import { Card } from "app/core/components/Card"
+import { Form, FORM_ERROR } from "app/core/components/Form"
+import { FormTextInput } from "app/core/components/Forms/FormTextInput"
+import { Link } from "app/core/components/Link"
+import { PageTitle } from "app/core/components/PageTitle"
+import { AuthenticationError, Routes, useMutation } from "blitz"
 
 type LoginFormProps = {
   onSuccess?: () => void
@@ -12,8 +18,8 @@ export const LoginForm = (props: LoginFormProps) => {
   const [loginMutation] = useMutation(login)
 
   return (
-    <div>
-      <h1>Login</h1>
+    <Card>
+      <PageTitle>Login</PageTitle>
 
       <Form
         submitText="Login"
@@ -34,20 +40,34 @@ export const LoginForm = (props: LoginFormProps) => {
             }
           }
         }}
+        submitButtonProps={{
+          size: "lg",
+        }}
       >
-        <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
-        <div>
-          <Link href={Routes.ForgotPasswordPage()}>
-            <a>Forgot your password?</a>
-          </Link>
-        </div>
+        <FormTextInput type="email" name="email" label="Email" placeholder="Email" />
+        <FormTextInput type="password" name="password" label="Password" placeholder="Password" />
+        <Checkbox name="remember">Remember Me</Checkbox>
       </Form>
 
-      <div style={{ marginTop: "1rem" }}>
-        Or <Link href={Routes.SignupPage()}>Sign Up</Link>
-      </div>
-    </div>
+      <Box mt={5} textAlign="center">
+        <Link href={Routes.ForgotPasswordPage()}>Forgot your password?</Link>
+      </Box>
+
+      <Box
+        mt={5}
+        textAlign="center"
+        borderTopWidth={1}
+        borderTopColor={useColorModeValue("gray.100", "gray.700")}
+        pt={5}
+      >
+        <Text>
+          Don't have an account?{" "}
+          <Link href={Routes.SignupPage()} colorScheme="brand">
+            Sign Up
+          </Link>
+        </Text>
+      </Box>
+    </Card>
   )
 }
 
