@@ -6,7 +6,7 @@ CREATE TABLE "User" (
     "name" TEXT,
     "email" TEXT NOT NULL,
     "hashedPassword" TEXT,
-    "role" TEXT NOT NULL DEFAULT 'user'
+    "role" TEXT NOT NULL DEFAULT 'USER'
 );
 
 -- CreateTable
