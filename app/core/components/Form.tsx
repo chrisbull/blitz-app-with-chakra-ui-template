@@ -76,7 +76,7 @@ export function Form<S extends z.ZodType<any, any>>({
 
   return (
     <Box>
-      {showDevTools && <DevTool control={ctx.control} />}
+      {showDevTools && <DevTool placement="bottom-right" control={ctx.control} />}
       <FormProvider {...ctx}>
         <Box
           as="form"
