@@ -13,7 +13,8 @@
     "test:watch": "jest --watch",
     "prepare": "husky install",
     "generate:favicon": "real-favicon generate faviconDescription.json faviconData.json public",
-    "docker:up": "docker compose up -d"
+    "docker:up": "docker compose up -d",
+    "postinstall": "blitz prisma generate"
   },
   "prisma": {
     "schema": "db/schema.prisma"
