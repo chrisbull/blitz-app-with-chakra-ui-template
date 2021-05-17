@@ -19,17 +19,3 @@ export const SEND_EMAILS_IN_DEV = true
 export const IS_PROD = APP_ENV === "production"
 export const IS_DEV = ["development", "staging"].includes(APP_ENV)
 export const IS_TEST = process.env.NODE_ENV === "test"
-
-console.log("CONFIG", {
-  NODE_ENV,
-  APP_ENV,
-  APP_NAME,
-  APP_ORIGIN,
-  POSTMARK_API_KEY,
-  FROM_EMAIL_ADDRESS,
-  COMPANY_ADDRESS,
-  SEND_EMAILS_IN_DEV,
-  IS_PROD,
-  IS_DEV,
-  IS_TEST,
-})
