@@ -2,17 +2,18 @@
   "name": "blitz-app-with-chakra-ui-template",
   "version": "1.0.0",
   "scripts": {
-    "dev": "blitz dev",
+    "dev": "NODE_OPTIONS='--inspect' blitz dev",
     "build": "NODE_ENV=production blitz build && blitz prisma migrate deploy && blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "prisma:migrate": "blitz prisma migrate dev",
-    "prisma:push": "blitz prisma db push --preview-feature",
+    "prisma:push": "blitz prisma db push",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "husky install",
-    "generate:favicon": "real-favicon generate faviconDescription.json faviconData.json public"
+    "generate:favicon": "real-favicon generate faviconDescription.json faviconData.json public",
+    "docker:up": "docker compose up -d"
   },
   "prisma": {
     "schema": "db/schema.prisma"
