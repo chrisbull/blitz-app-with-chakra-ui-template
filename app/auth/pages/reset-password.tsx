@@ -4,11 +4,10 @@ import { ResetPassword } from "app/auth/validations"
 import { Card } from "app/core/components/Card"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import { FormTextInput } from "app/core/components/Forms/FormTextInput"
-import { Link } from "app/core/components/Link"
 import { PageContainer } from "app/core/components/PageContainer"
 import { PageTitle } from "app/core/components/PageTitle"
 import Layout from "app/core/layouts/Layout"
-import { BlitzPage, Routes, useMutation, useRouterQuery } from "blitz"
+import { BlitzPage, Link, Routes, useMutation, useRouterQuery } from "blitz"
 import React from "react"
 
 const ResetPasswordPage: BlitzPage = () => {
@@ -33,7 +32,7 @@ const ResetPasswordPage: BlitzPage = () => {
           ) : (
             <Form
               submitText="Reset Password"
-              schema={ResetPassword.omit({ token: true })}
+              schema={ResetPassword}
               initialValues={{ password: "", passwordConfirmation: "" }}
               onSubmit={async (values) => {
                 try {
