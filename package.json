@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' blitz dev",
-    "build": "NODE_ENV=production blitz build && blitz prisma migrate deploy && blitz build",
+    "build": "NODE_ENV=production blitz build && blitz prisma migrate deploy",
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "prisma:migrate": "blitz prisma migrate dev",
