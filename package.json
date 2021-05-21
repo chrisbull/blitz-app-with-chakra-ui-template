@@ -36,6 +36,7 @@
     "@chakra-ui/theme-tools": "1.1.7",
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
+    "@heroicons/react": "1.0.1",
     "@hookform/devtools": "3.1.0",
     "@hookform/resolvers": "2.5.1",
     "@prisma/client": "~2.23.0",
