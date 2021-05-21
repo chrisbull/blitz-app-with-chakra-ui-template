@@ -13,7 +13,7 @@ import {
   useRouter,
 } from "blitz"
 import { DefaultSeo } from "next-seo"
-import React from "react"
+import React, { Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   return (
-    <>
+    <Suspense fallback="Loading...">
       <DefaultSeo defaultTitle={`${APP_NAME}`} titleTemplate={`%s | ${APP_NAME}`} />
       <Head>
         <meta charSet="utf-8" />
@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
           {getLayout(<Component {...pageProps} />)}
         </ErrorBoundary>
       </ChakraProvider>
-    </>
+    </Suspense>
   )
 }
 
