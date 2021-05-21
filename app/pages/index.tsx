@@ -16,7 +16,9 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import logout from "app/auth/mutations/logout"
+import { APP_NAME } from "app/config"
 import Logo from "app/core/components/Logo"
+import { PageContainer } from "app/core/components/PageContainer"
 import { useCurrentUser } from "app/core/hooks/useCurrentUser"
 import Layout from "app/core/layouts/Layout"
 import { BlitzPage, Link, Routes, useMutation } from "blitz"
@@ -75,12 +77,13 @@ const UserInfo = () => {
 
 const Home: BlitzPage = () => {
   return (
-    <Flex minH="100vh">
+    <PageContainer>
       <Container>
         <VStack as="main" align="stretch" spacing={5} py={10}>
           <Box>
             <Logo />
           </Box>
+          <Heading>Welcome to {APP_NAME}</Heading>
           <Text>
             <strong>Congrats!</strong> Your app is ready, including user sign-up and log-in.
           </Text>
@@ -162,7 +165,7 @@ const Home: BlitzPage = () => {
           </Text>
         </Flex>
       </Container>
-    </Flex>
+    </PageContainer>
   )
 }
 
