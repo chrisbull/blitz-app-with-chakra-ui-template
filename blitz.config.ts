@@ -1,8 +1,9 @@
-const { sessionMiddleware, simpleRolesIsAuthorized } = require("@blitzjs/server")
+import { BlitzConfig, sessionMiddleware, simpleRolesIsAuthorized } from "blitz"
 
-module.exports = {
+const config: BlitzConfig = {
   middleware: [
     sessionMiddleware({
+      cookiePrefix: "blitz-app-with-chakra-ui-template",
       isAuthorized: simpleRolesIsAuthorized,
     }),
   ],
@@ -15,3 +16,4 @@ module.exports = {
   },
   */
 }
+module.exports = config
