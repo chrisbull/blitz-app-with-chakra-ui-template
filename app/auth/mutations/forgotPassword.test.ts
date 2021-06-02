@@ -1,7 +1,7 @@
-import { hash256, Ctx } from "blitz"
-import forgotPassword from "./forgotPassword"
+import { Ctx, hash256 } from "blitz"
 import db from "db"
 import previewEmail from "preview-email"
+import forgotPassword from "./forgotPassword"
 
 beforeEach(async () => {
   await db.$reset()

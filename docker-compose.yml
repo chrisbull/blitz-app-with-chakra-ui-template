@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  postgres:
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    image: postgres:latest
+    restart: always
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      # these are only used for development, so doesn't matter if its here
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "postgres"
+volumes:
+  postgres:

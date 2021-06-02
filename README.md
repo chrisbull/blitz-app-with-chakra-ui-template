@@ -1,31 +1,66 @@
-[![Blitz.js](https://raw.githubusercontent.com/blitz-js/art/master/github-cover-photo.png)](https://blitzjs.com)
+[![Blitz.js](https://raw.githubusercontent.com/chrisbull/blitz-app-with-chakra-ui-template/main/public/logo.svg)](https://github.com/chrisbull/blitz-app-with-chakra-ui-template)
 
-This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
+# **Blitz + ChakraUI**
 
-# **blitz-app-with-chakra-ui-template**
+This is a [Blitz.js](https://github.com/blitz-js/blitz) app. **But with a complete implementation of [Chakra UI](https://chakra-ui.com/)**
+
+---
+
+## **So what's Different?**
+
+- **Components** - converted to use `@chakra-ui/react`
+- **Custom theme** - with easy customization and well organizated folder structure
+- **Dark Mode** - example of how to use dark mode using the system settings
+
+---
 
 ## Getting Started
 
 Run your app in the development mode.
 
 ```
-blitz dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
+
+## Database with Sqlite
+
+There are two options already setup in this project.
+
+- Sqlite (default)
+- Postgres (docker-compose)
+
+### Database with Sqlite
+
+Sqlite is used by default. Just run `yarn dev` to get started. If you make changes, then run `yarn prisma:migrate` to create migration files.
+
+Or if you are running everying in a development mode, just run `yarn prisma:push`. This will force push the changes to the database.
+
+### Postgres Database Using Docker
+
+To switch the databases to Postgres, go to `db/schema.prisma` and change `sqlite` to `postgres`.
+
+Make sure to setup your db with docker using `docker-compose`
+
+```
+docker-compose up -d
+```
 
 ## Environment Variables
 
 Ensure the `.env.local` file has required environment variables:
 
 ```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/blitz-app-with-chakra-ui-template
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
 ```
 
 Ensure the `.env.test.local` file has required environment variables:
 
 ```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/blitz-app-with-chakra-ui-template_test
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres_test
 ```
 
 ## Tests
@@ -33,6 +68,8 @@ DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/blitz-app-with-chakr
 Runs your tests using Jest.
 
 ```
+blitz test
+or
 yarn test
 ```
 
