@@ -11,20 +11,24 @@ import { ErrorBoundary } from "react-error-boundary"
 import LoginForm from "app/auth/components/LoginForm"
 import { Suspense } from "react"
 
+import { ChakraProvider } from "@chakra-ui/react"
+
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
   const router = useRouter()
 
   return (
-    <Suspense fallback="Loading...">
-      <ErrorBoundary
-        FallbackComponent={RootErrorFallback}
-        resetKeys={[router.asPath]}
-        onReset={useQueryErrorResetBoundary().reset}
-      >
-        {getLayout(<Component {...pageProps} />)}
-      </ErrorBoundary>
-    </Suspense>
+    <ChakraProvider>
+      <Suspense fallback="Loading...">
+        <ErrorBoundary
+          FallbackComponent={RootErrorFallback}
+          resetKeys={[router.asPath]}
+          onReset={useQueryErrorResetBoundary().reset}
+        >
+          {getLayout(<Component {...pageProps} />)}
+        </ErrorBoundary>
+      </Suspense>
+    </ChakraProvider>
   )
 }
 
