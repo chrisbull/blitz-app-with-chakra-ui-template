@@ -1,5 +1,5 @@
-import React, {PropsWithoutRef} from "react"
-import {useField} from "react-final-form"
+import { forwardRef, PropsWithoutRef } from "react"
+import { useFormContext } from "react-hook-form"
 
 export interface LabeledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElements["input"]> {
   /** Field name. */
@@ -11,27 +11,26 @@ export interface LabeledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElem
   outerProps?: PropsWithoutRef<JSX.IntrinsicElements["div"]>
 }
 
-export const LabeledTextField = React.forwardRef<HTMLInputElement, LabeledTextFieldProps>(
-  ({name, label, outerProps, ...props}, ref) => {
+export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldProps>(
+  ({ label, outerProps, name, ...props }, ref) => {
     const {
-      input,
-      meta: {touched, error, submitError, submitting},
-    } = useField(name, {
-      parse: props.type === "number" ? Number : undefined
-    })
-
-    const normalizedError = Array.isArray(error) ? error.join(", ") : error || submitError
+      register,
+      formState: { isSubmitting, errors },
+    } = useFormContext()
+    const error = Array.isArray(errors[name])
+      ? errors[name].join(", ")
+      : errors[name]?.message || errors[name]
 
     return (
       <div {...outerProps}>
         <label>
           {label}
-          <input {...input} disabled={submitting} {...props} ref={ref} />
+          <input disabled={isSubmitting} {...register(name)} {...props} />
         </label>
 
-        {touched && normalizedError && (
-          <div role="alert" style={{color: "red"}}>
-            {normalizedError}
+        {error && (
+          <div role="alert" style={{ color: "red" }}>
+            {error}
           </div>
         )}
 
@@ -53,7 +52,7 @@ export const LabeledTextField = React.forwardRef<HTMLInputElement, LabeledTextFi
         `}</style>
       </div>
     )
-  },
+  }
 )
 
 export default LabeledTextField
